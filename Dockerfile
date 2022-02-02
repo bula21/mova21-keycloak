@@ -1,4 +1,4 @@
-FROM jboss/keycloak@sha256:333c263d31e1b56a0e13779e7c6166d591b19624f0b29465b03cd1827610ca2a as dev
+FROM jboss/keycloak@sha256:b23994833c334540a9af2c9960431f5bd292e1007ad909414d20cd7ed0f01274 as dev
 
 FROM dev
 
