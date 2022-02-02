@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  keycloak:
+    build:
+      context: .
+      target: dev
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      DB_ADDR: ${DB_ADDR:-postgres}
+      DB_DATABASE: ${DB_DATABASE:-keycloak}
+      DB_USER: ${DB_USER:-keycloak}
+      DB_PASSWORD: ${DB_PASSWORD:?}
+      DB_VENDOR: ${DB_VENDOR:-postgres}
+      KEYCLOAK_USER: ${KEYCLOAK_USER:-admin}
+      KEYCLOAK_PASSWORD: ${KEYCLOAK_PASSWORD:?}
+    volumes:
+      - ./themes/mova:/opt/jboss/keycloak/themes/mova
+    ports:
+      - 8080:8080
+    networks:
+      - default
+      - internal
+  postgres:
+    image: postgres:11
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_DATABASE:-keycloak}
+      POSTGRES_USER: ${DB_USER:-keycloak}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - internal
+
+volumes:
+  postgres_data: {}
+
+networks:
+  internal:
+    internal: true
