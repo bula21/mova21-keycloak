@@ -16,6 +16,9 @@ services:
       DB_VENDOR: ${DB_VENDOR:-postgres}
       KEYCLOAK_USER: ${KEYCLOAK_USER:-admin}
       KEYCLOAK_PASSWORD: ${KEYCLOAK_PASSWORD:?}
+      KEYCLOAK_HOSTNAME: ${KEYCLOAK_HOSTNAME:?}
+      KEYCLOAK_HTTP_PORT: '8080'
+      PROXY_ADDRESS_FORWARDING: 'true'
     volumes:
       - ./themes/mova:/opt/jboss/keycloak/themes/mova
     ports:
