@@ -1,4 +1,4 @@
-FROM quay.io/keycloak/keycloak:16.1.1@sha256:24175bfe68a40a56ec20849bd3fdac2f727ea0a851c24b29df663288a209d2f7 as dev
+FROM quay.io/keycloak/keycloak:17.0.0@sha256:ab3b72a44813902fe44c9b927527f96096d4f9cbc4c881234b7b6bbc884d8dd8 as dev
 
 FROM dev
 
