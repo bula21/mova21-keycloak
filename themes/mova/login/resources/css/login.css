@@ -1,3 +1,10 @@
+/* Patternfly CSS places a "bg-login.jpg" as the background on this ".login-pf" class.
+   This clashes with the "keycloak-bg.png' background defined on the body below.
+   Therefore the Patternfly background must be set to none. */
+   .login-pf {
+    background: none;
+}
+
 .login-pf body {
     background: url("../img/background-mova.jpg") no-repeat center center fixed;
     background-size: cover;
@@ -208,14 +215,6 @@ a#kc-current-locale-link::after {
     width: 100%;
 }
 
-#kc-logo-wrapper {
-    background-image: url(../img/logo.svg);
-    background-repeat: no-repeat;
-    height: 63px;
-    width: 300px;
-    margin: 62px auto 0;
-}
-
 div.kc-logo-text {
     background-image: url(../img/logo.svg);
     background-repeat: no-repeat;
@@ -261,6 +260,31 @@ div.kc-logo-text span {
 
 #kc-webauthn-settings-form {
     padding-top: 8px;
+}
+
+#kc-form-webauthn .select-auth-box-parent {
+    pointer-events: none;
+}
+
+#kc-form-webauthn .select-auth-box-desc {
+    color: var(--pf-global--palette--black-600);
+}
+
+#kc-form-webauthn .select-auth-box-headline {
+    color: var(--pf-global--Color--300);
+}
+
+#kc-form-webauthn .select-auth-box-icon {
+    flex: 0 0 3em;
+}
+
+#kc-form-webauthn .select-auth-box-icon-properties {
+    margin-top: 10px;
+    font-size: 1.8em;
+}
+
+#kc-form-webauthn .pf-l-stack__item {
+    margin: -1px 0;
 }
 
 #kc-content-wrapper {
@@ -526,14 +550,6 @@ ul#kc-totp-supported-apps {
         text-align: right;
         z-index: 9999;
     }
-
-    #kc-logo-wrapper {
-        background-size: 100px 21px;
-        height: 21px;
-        width: 100px;
-        margin: 20px 0 0 20px;
-    }
-
 }
 
 @media (min-height: 646px) {
@@ -629,6 +645,12 @@ ul#kc-totp-supported-apps {
     font-size: var(--pf-global--FontSize--sm);
 }
 
+.select-auth-box-paragraph {
+    text-align: center;
+    font-size: var(--pf-global--FontSize--md);
+    margin-bottom: 5px;
+}
+
 .card-pf {
     margin: 0 auto;
     box-shadow: var(--pf-global--BoxShadow--lg);
@@ -699,18 +721,3 @@ ul#kc-totp-supported-apps {
 #kc-back {
     margin-top: 5px;
 }
-
-#zocial-midata {
-    background-color: #99bf62;
-    border-color: #00a651;
-    background-size: 1.9rem 1.9rem;
-    background-position: left .75rem center;
-    background-image: url("../img/midata.svg");
-    padding-left: 4.15rem;
-    padding-right: 4.15rem;
-    position: relative;
-    overflow: hidden;
-    background-repeat: no-repeat;
-    color: #fff;
-}
-
