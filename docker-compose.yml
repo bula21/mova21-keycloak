@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 
 services:
   keycloak:
@@ -9,17 +9,18 @@ services:
     depends_on:
       - postgres
     environment:
-      DB_ADDR: ${DB_ADDR:-postgres}
-      DB_DATABASE: ${DB_DATABASE:-keycloak}
-      DB_USER: ${DB_USER:-keycloak}
-      DB_PASSWORD: ${DB_PASSWORD:?}
-      DB_VENDOR: ${DB_VENDOR:-postgres}
-      KEYCLOAK_USER: ${KEYCLOAK_USER:-admin}
-      KEYCLOAK_PASSWORD: ${KEYCLOAK_PASSWORD:?}
-      KEYCLOAK_HTTP_PORT: '8080'
-      PROXY_ADDRESS_FORWARDING: 'true'
+      KC_DB_URL_HOST: ${DB_ADDR:-postgres}
+      KC_DB_URL_DATABASE: ${DB_DATABASE:-keycloak}
+      KC_DB_USERNAME: ${DB_USER:-keycloak}
+      KC_DB_PASSWORD: ${DB_PASSWORD:?}
+      KC_DB: ${DB_VENDOR:-postgres}
+      KEYCLOAK_ADMIN: ${KEYCLOAK_USER:-admin}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_PASSWORD:?}
+      KC_PROXY: 'edge'
+      # KC_HOSTNAME: 'auth.bula21.ch'  # only needed for production
+      KC_HTTP_RELATIVE_PATH: 'auth'
     volumes:
-      - ./themes/mova:/opt/jboss/keycloak/themes/mova
+      - ./themes/mova:/opt/keycloak/themes/mova
     ports:
       - 8080:8080
     networks:
