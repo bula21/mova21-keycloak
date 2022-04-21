@@ -10,6 +10,7 @@ services:
       - postgres
     environment:
       KC_DB_URL_HOST: ${DB_ADDR:-postgres}
+      KC_DB_URL_PORT: ${DB_PORT:-5432}
       KC_DB_URL_DATABASE: ${DB_DATABASE:-keycloak}
       KC_DB_USERNAME: ${DB_USER:-keycloak}
       KC_DB_PASSWORD: ${DB_PASSWORD:?}
@@ -19,6 +20,7 @@ services:
       KC_PROXY: 'edge'
       # KC_HOSTNAME: 'auth.bula21.ch'  # only needed for production
       KC_HTTP_RELATIVE_PATH: 'auth'
+      KC_HEALTH_ENABLED: 'true'
     volumes:
       - ./themes/mova:/opt/keycloak/themes/mova
     ports:

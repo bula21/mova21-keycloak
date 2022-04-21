@@ -3,6 +3,7 @@ FROM quay.io/keycloak/keycloak:18.0.0@sha256:f5d1e8c0c1cde50ba1da82788af50be590e
 FROM keycloak as builder
 ENV KC_DB=postgres
 ENV KC_HTTP_RELATIVE_PATH=auth
+ENV KC_HEALTH_ENABLED=true
 RUN /opt/keycloak/bin/kc.sh build
 
 FROM keycloak as dev
