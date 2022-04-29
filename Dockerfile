@@ -1,4 +1,4 @@
-FROM quay.io/keycloak/keycloak:18.0.0@sha256:f5d1e8c0c1cde50ba1da82788af50be590e8fbf4d6e46198f9971c3bf94567f9 as keycloak
+FROM quay.io/keycloak/keycloak:18.0.0@sha256:5794f1102b1104c8f8066adfb4c07d178c6f03e00be0ae6ae1a2d2e8b8b00d20 as keycloak
 
 FROM keycloak as builder
 ENV KC_DB=postgres
