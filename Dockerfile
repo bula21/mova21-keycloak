@@ -13,4 +13,4 @@ CMD ["start-dev"]
 
 FROM dev
 ADD ./themes/mova /opt/keycloak/themes/mova
-CMD ["start"]
+CMD ["--spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true", "start"]
